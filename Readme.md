@@ -13,7 +13,8 @@ npm install
 npm run dev
 ```
 - server
+```bash
 cd ai
 pip install -r requirements.txt
 py app.py
-
+```
