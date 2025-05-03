@@ -1,0 +1,49 @@
+BEGIN
+
+  // 1. Load Libraries & Data
+  IMPORT data-handling, ML, and plotting libraries
+  data ← READ CSV "heart.csv"
+
+  // 2. Explore & Preprocess
+  DISPLAY data.shape, head, info, describe
+  FOR each column in data:
+    IF missing values exist:
+    IMPUTE or DROP missing entries
+  APPLY normalization or standardization to numeric features
+
+  // 3. Split Dataset
+  X ← data DROP "target"
+  y ← data["target"]
+  (X_train, X_test, Y_train, Y_test) ← train_test_split(X, y, test_size=0.2, random_state=0)
+
+  // 4. Define Models & Storage
+  models ← {
+    "LogisticRegression": LogisticRegression(),
+    "NaiveBayes": GaussianNB(),
+    "SVM": SVC(kernel="linear"),
+    "KNN": KNeighborsClassifier(n_neighbors=7),
+    "DecisionTree": DecisionTreeClassifier(random_state=best_seed_dt),
+    "RandomForest": RandomForestClassifier(random_state=best_seed_rf),
+    "XGBoost": XGBClassifier(objective="binary:logistic"),
+    "NeuralNet": SequentialNeuralNetwork(...)
+  }
+  results ← empty list
+
+  // 5. Train, Predict & Evaluate
+  FOR name, model IN models:
+    model.fit(X_train, Y_train)
+    Y_pred ← model.predict(X_test)
+    accuracy ← accuracy_score(Y_test, Y_pred)
+    APPEND (name, accuracy) TO results
+
+  // 6. Save Best Model
+  best_model_name, best_score ← MAX(results BY accuracy)
+  IF best_model_name == "RandomForest":
+    SAVE models["RandomForest"] AS "random_forest_model.pkl"
+
+  // 7. Report & Visualize
+  FOR each (name, acc) IN results:
+    PRINT name, "→", acc, "%"
+  PLOT bar chart of model names vs. accuracies
+
+END

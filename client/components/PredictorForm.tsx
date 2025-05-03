@@ -83,7 +83,7 @@ export default function PredictorForm () {
         body: JSON.stringify(payload)
       })
       const data = await response.json()
-      setResult(data.prediction)
+      setResult(`${data.prediction}`)
     } catch (error) {
       console.error('Error in prediction:', error)
     }
@@ -277,7 +277,7 @@ export default function PredictorForm () {
         </div>
       </form>
 
-      {result && <ResultCard prediction={result} />}
+      {result && <ResultCard prediction={`${result}`} />}
     </div>
   )
 }
