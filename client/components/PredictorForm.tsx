@@ -140,7 +140,7 @@ export default function PredictorForm () {
           </select>
         </FieldWrapper>
 
-        <FieldWrapper label='Resting Blood Pressure (mm Hg)' name='trestbps'>
+        <FieldWrapper label='Resting Blood Pressure (mm Hg) (90-200)' name='trestbps'>
           <input
             type='number'
             name='trestbps'
@@ -150,7 +150,7 @@ export default function PredictorForm () {
           />
         </FieldWrapper>
 
-        <FieldWrapper label='Cholesterol (mg/dl)' name='chol'>
+        <FieldWrapper label='Cholesterol (mg/dl) (100-600)' name='chol'>
           <input
             type='number'
             name='chol'
@@ -187,7 +187,7 @@ export default function PredictorForm () {
           </select>
         </FieldWrapper>
 
-        <FieldWrapper label='Max Heart Rate Achieved' name='thalach'>
+        <FieldWrapper label='Max Heart Rate Achieved (60-220)' name='thalach'>
           <input
             type='number'
             name='thalach'
@@ -210,7 +210,7 @@ export default function PredictorForm () {
           </select>
         </FieldWrapper>
 
-        <FieldWrapper label='Oldpeak (ST Depression)' name='oldpeak'>
+        <FieldWrapper label='Oldpeak (ST Depression) (0-6)' name='oldpeak'>
           <input
             type='number'
             step='0.1'
